@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "ES5",
+        "preserveConstEnums": true,
+        "noImplicitAny": true,
+        "removeComments": false
+    },
+    "files": [
+        "src/ts/app.ts",
+        "src/ts/main/main.controller.ts"
+    ]
+}
