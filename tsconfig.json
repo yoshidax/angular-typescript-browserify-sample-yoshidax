@@ -7,7 +7,6 @@
         "removeComments": false
     },
     "files": [
-        "src/ts/app.ts",
-        "src/ts/main/main.controller.ts"
+        "src/ts/app.entry.ts"
     ]
 }

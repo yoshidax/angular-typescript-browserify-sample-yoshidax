@@ -5,10 +5,9 @@ import angular = require('angular');
 class MainCtrl {
 
 	public static componentName = 'MainCtrl';
+	// public static $inject = ['$scope'];
 	
-	// private static $inject = ['$scope'];
-
-	constructor($scope: ng.IScope) {
+	constructor() {
 	}
 	
 	say(message: string): string {
@@ -16,14 +15,5 @@ class MainCtrl {
 	}
 }
 
-// function MainCtrl($scope: ng.IScope) {
-// 	this.$scope = $scope;
-// }
-// MainCtrl.prototype.say = (msg: string) => console.log(msg);
-
-export = MainCtrl;
-
-// [MEMO] 2番目の引数型はFunctionであり外部モジュールでrequireすると型が合わない
-//        従ってやりたくはないがany[]で逃げた。ほんとはやりたくない。。
 angular.module('myApp').controller(MainCtrl.componentName, MainCtrl);
-
+export = MainCtrl;
