@@ -1,7 +1,11 @@
 /// <reference path="../../../typings/tsd" />
 
 export interface GlobalHeaderModel {
-	userId: string;
+	userId?: string;
+	headerString?: string;
+}
+
+interface GlobalHeaderScope extends GlobalHeaderModel, ng.IScope {
 }
 
 class GlobalHeaderDirective {
@@ -16,10 +20,14 @@ class GlobalHeaderDirective {
 			controllerAs: 'vm',
 			bindToController: true,
 			templateUrl: 'ts/common/globalHeader.directive.html',
+			// require: '',
 			compile: () => {
 				return {
-					preLink: () => {},
-					postLink: () => {}
+					pre: () => {},
+					post: (scope: GlobalHeaderScope) => {
+						console.log(scope.headerString);
+						!scope.headerString && (scope.headerString = 'TEST');
+					}
 				}
 			}
 		};
@@ -28,6 +36,9 @@ class GlobalHeaderDirective {
 
 class GlobalHeaderDirectiveCtrl {
 	public model: GlobalHeaderModel;
+	constructor() {
+		console.dir(this.model);
+	}
 }
 
 angular.module('myApp').directive(

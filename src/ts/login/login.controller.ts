@@ -21,6 +21,7 @@ class LoginCtrl {
 		},
 		globalHeaderModel: {
 			userId: null
+			// headerString: 'sample'
 		}
 	};
 

@@ -4,7 +4,7 @@
   "description": "browserify + anugular",
   "scripts": {
     "w": "watchify src/ts/app.entry.ts -x lodash -x moment -x angular -x angular-route -p [ tsify -m commonjs -t ES5 --noImplicitAny ] --vervose -o src/bundle.js",
-    "bb": "browserify src/ts/app.entry.ts -x lodash -x moment -x angular -x angular-route -p [ tsify -m commonjs -t ES5 --noImplicitAny ] --vervose -o src/bundle.js",
+    "bb": "browserify src/ts/app.entry.ts -x lodash -x moment -x angular -x angular-route -p [ tsify -m commonjs -t ES5 --noImplicitAny ] --vervose -t uglifyify -o src/bundle.js",
     "bv": "browserify -r lodash -r moment -r angular -r angular-route -o src/vendor.js"
   },
   "author": "yoshidax",
