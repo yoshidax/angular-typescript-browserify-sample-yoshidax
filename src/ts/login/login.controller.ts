@@ -5,7 +5,7 @@ import GlobalHeaderDirective = require('../common/globalHeader.directive');
 import LoginDirective = require('../common/login.directive');
 
 interface LoginCtrlModel {
-	globalHeaderModel: GlobalHeaderDirective.GlobalHeaderModel;
+	globalHeaderModel?: GlobalHeaderDirective.GlobalHeaderModel;
 	loginModel: LoginDirective.LoginModel;
 }
 
@@ -17,11 +17,12 @@ class LoginCtrl {
 	public model: LoginCtrlModel = {
 		loginModel: {
 			userId: null,
-			password: null
+			password: null,
+			onSubmit: this.onLoginSubmit
 		},
 		globalHeaderModel: {
-			userId: null
-			// headerString: 'sample'
+			// userId: null
+			// headerString: undefined
 		}
 	};
 
@@ -38,6 +39,11 @@ class LoginCtrl {
 				 this.model.globalHeaderModel.userId = this.model.loginModel.userId;
 			 });
 	}
+
+	onLoginSubmit(userId: string, password: string): void {
+		alert(`submit!! userId: ${userId} password: ${password}`);
+	}
+	
 }
 
 import '../common/globalHeader.directive';

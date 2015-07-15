@@ -3,6 +3,7 @@
 export interface LoginModel {
 	userId: string;
 	password: string;
+	onSubmit: (userId: string, password: string) => void
 }
 
 class LoginDirective {
@@ -34,7 +35,7 @@ class LoginDirectiveCtrl {
 	constructor(private $log: ng.ILogService) {}
 
 	public login(): void {
-		this.$log.debug(this.model.userId + ':' + this.model.password);
+		this.model.onSubmit(this.model.userId, this.model.password);
 	}
 }
 

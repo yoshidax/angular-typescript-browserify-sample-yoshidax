@@ -5,7 +5,10 @@ export interface GlobalHeaderModel {
 	headerString?: string;
 }
 
-interface GlobalHeaderScope extends GlobalHeaderModel, ng.IScope {
+interface GlobalHeaderScope extends ng.IScope {
+	vm:  {
+		model: GlobalHeaderModel;
+	}
 }
 
 class GlobalHeaderDirective {
@@ -23,10 +26,9 @@ class GlobalHeaderDirective {
 			// require: '',
 			compile: () => {
 				return {
-					pre: () => {},
-					post: (scope: GlobalHeaderScope) => {
-						console.log(scope.headerString);
-						!scope.headerString && (scope.headerString = 'TEST');
+					pre: (scope, iElement, iAttrs, controller) => {
+					},
+					post: (scope, iElement, iAttrs, controller) => {
 					}
 				}
 			}
@@ -37,7 +39,15 @@ class GlobalHeaderDirective {
 class GlobalHeaderDirectiveCtrl {
 	public model: GlobalHeaderModel;
 	constructor() {
-		console.dir(this.model);
+		this.initVmValue();
+	}
+	private initVmValue(): void {
+	    if (!('userId' in this.model)) {
+	        this.model.userId = 'TEST';
+	    }
+	    if (!('headerString' in this.model)) {
+	        this.model.headerString = 'TEST';
+	    }
 	}
 }
 
